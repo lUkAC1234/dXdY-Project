@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head class="head">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {% load static %}
+        <title class="title">dXdY : main</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'styles/main.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    </head>
+    <body id="b" class="body">
+        <header id="h" class="header">
+            <div class="header__wrapper">
+                <div class="header__wrapper--block-1">
+                    <a href="{% url 'main' %}">
+                        <img class="header__wrapper--block-1--logo" src="{% static 'photos/Logo.svg' %}" alt="logo">
+                    </a>
+                </div>
+                <div class="header__wrapper--block-2">
+                    <nav class="header__wrapper--block-2--nav-bar">
+                        <a class="header__wrapper--block-2--nav-bar--link" href="{% url 'faq' %}" title="Discover initiatives">FAQ</a>
+                        <a class="header__wrapper--block-2--nav-bar--link" href="{% url 'login' %}" title="Funded grants">Login</a>
+                        <a class="header__wrapper--block-2--nav-bar--link" href="{% url 'blog' %}" title="Program expenses">Blog</a>
+                        <a class="header__wrapper--block-2--nav-bar--link" href="{% url 'weather' %}" title="Weather">Weather</a>
+                        <a class="header__wrapper--block-2--nav-bar--link" href="{% url 'registration' %}" title="apply for grant">Apply for grant</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="header__wrapper--mobile">
+                <div class="header__wrapper--mobile--block">
+                    <a class="header__wrapper--mobile--block--main-link" href="{% url 'main' %}">
+                        <img class="header__wrapper--block-1--logo" src="{% static 'photos/Logo.svg' %}" alt="mobile-logo">
+                    </a>
+                </div>
+                <a class="header__wrapper--mobile--applybtn" title="apply for grant" href="{% url 'registration' %}">Apply for grant</a>
+                <div id="navbar" class="header__wrapper--mobile--overlay">
+                    <a class="header__wrapper--mobile--overlay--closebtn" href="" title="hamburger" onclick="closeNavBar()">&times;</a>
+                    <div class="header__wrapper--mobile--overlay--content-list">
+                        <a class="header__wrapper--mobile--overlay--content-list--links" href="{% url 'faq' %}">FAQ</a>
+                        <a class="header__wrapper--mobile--overlay--content-list--links" href="{% url 'login' %}">Login</a>
+                        <a class="header__wrapper--mobile--overlay--content-list--links" href="{% url 'blog' %}">Blog</a>
+                        <a class="header__wrapper--mobile--overlay--content-list--links" href="{% url 'weather' %}">Weather</a>
+                        <a class="header__wrapper--mobile--overlay--content-list--links" href="{% url 'registration' %}">Apply for grant</a>
+                    </div>
+                </div>
+                <span class="header__wrapper--mobile--span" onclick="openNavBar()">&#9776;</span>
+            </div>
+        </header>
+        <main id="m" class="main">
+            <div class="main__wrapper">
+                <div class="main__wrapper--intro">
+                    <div class="main__wrapper--intro--block-1">
+                        <h1 class="main__wrapper--intro--block-1--h1">Powering the future of <br> dYdX through <br> community grants</h1>
+                    </div>
+                    <div class="main__wrapper--intro--block-2">
+                        <button class="main__wrapper--intro--block-2--btn-1" type="button" title="Discover RFPs">Blogs</button>
+                        <button class="main__wrapper--intro--block-2--btn-2" type="button" title="Apply for grant">Apply for grant</button>
+                    </div>
+                    <div class="main__wrapper--intro--block-3">
+                        <div class="main__wrapper--intro--block-3--content-1">
+                            <h2 class="main__wrapper--intro--block-3--content-1--h2">100+</h2>
+                            <p class="main__wrapper--intro--block-3--content-1--p">projects funded</p>
+                        </div>
+                        <div class="main__wrapper--intro--block-3--content-2">
+                            <h2 class="main__wrapper--intro--block-3--content-2--h2">$3+ million</h2>
+                            <p class="main__wrapper--intro--block-3--content-2--p">awarded</p>
+                        </div>
+                        <div class="main__wrapper--intro--block-3--content-3">
+                            <h2 class="main__wrapper--intro--block-3--content-3--h2">400+</h2>
+                            <p class="main__wrapper--intro--block-3--content-3--p">projects funded</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="main__wrapper--down-arrow">
+                    <img class="main__wrapper--down-arrow--img" src="{% static 'photos/Down arrow.svg' %}" alt="switch to another content">
+                </div>
+                <div class="main__wrapper--projects-built-with-grants">
+                    <h3 class="main__wrapper--projects-built-with-grants--h3">Projects built with grants</h3>
+                    <p class="main__wrapper--projects-built-with-grants--p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla risus, consectetur ut bibendum non, gravida non libero.</p>
+                    <a class="main__wrapper--projects-built-with-grants--a" href="" title="View all funded projects">View all funded projects<img src="photos/fi_arrow-right2.svg" alt=""></a>
+                </div>
+                <div class="main__wrapper--rewards-grants">
+                    <div class="main__wrapper--rewards-grants--block" id="h_scroll">
+                        <div class="main__wrapper--rewards-grants--block-1">
+                            <div class="main__wrapper--rewards-grants--block-1--content">
+                                <p class="main__wrapper--rewards-grants--block-1--p1">Crowfund</p>
+                                <h3 class="main__wrapper--rewards-grants--block-1--h3">Funding rates page</h3>
+                                <p class="main__wrapper--rewards-grants--block-1--p2">Funding amount: $5,000 - $6,000</p>
+                                <p class="main__wrapper--rewards-grants--block-1--p3">Grant will be used to build a dedicated web app to give traders a view of all dYdX asset funding rates across multiple timeframes. The page will be interactive to include deep diving across different assets and historical analysis of changing rates. It will also include API functionalities to allow developer access.</p>
+                            </div>
+                            <div class="main__wrapper--rewards-grants--block-1--avatars-block">
+                                <img class="main__wrapper--rewards-grants--block--avatars-block--img-1" src="{% static 'photos/avatar1.svg' %}" alt="">
+                                <img class="main__wrapper--rewards-grants--block--avatars-block--img-2" src="{% static 'photos/avatar2.svg' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="main__wrapper--rewards-grants--block-2">
+                            <div class="main__wrapper--rewards-grants--block-2--content">
+                                <p class="main__wrapper--rewards-grants--block-2--p1">Edition</p>
+                                <h3 class="main__wrapper--rewards-grants--block-2--h3">Trading integration</h3>
+                                <p class="main__wrapper--rewards-grants--block-2--p2">Funding amount: $5,000 - $6,000</p>
+                                <p class="main__wrapper--rewards-grants--block-2--p3">The grant will be used to build a web application that integrates Tradingview strategies into a dYdX Trading account to execute trades directly through a strategy. Users will be able to tap into Tradingview resources and test out different ...</p>
+                            </div>
+                            <div class="main__wrapper--rewards-grants--block-2--avatars-block">
+                                <img class="main__wrapper--rewards-grants--block--avatars-block--img-1" src="{% static 'photos/avatar3.svg' %}" alt="">
+                                <img class="main__wrapper--rewards-grants--block--avatars-block--img-2" src="{% static 'photos/avatar4.svg' %}" alt="">
+                                <img class="main__wrapper--rewards-grants--block--avatars-block--img-3" src="{% static 'photos/avatar5.svg' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="main__wrapper--rewards-grants--block-3">
+                            <div class="main__wrapper--rewards-grants--block-3">
+                                <p class="main__wrapper--rewards-grants--block-3--p1">Entry</p>
+                                <h3 class="main__wrapper--rewards-grants--block-3--h3">Rewards optimization research and paper</h3>
+                                <p class="main__wrapper--rewards-grants--block-3--p2">Funding amount: $5,000 - $6,000</p>
+                                <p class="main__wrapper--rewards-grants--block-3--p3">The Grant will be used to write a full research report and code samples that will determine optimal trading strategies for rewards maximization. The paper will be marketed across several platforms and shared among trading circles to help readership.</p>
+                            </div>
+                            <div class="main__wrapper--rewards-grants--block-3--avatars-block">
+                                <img class="main__wrapper--rewards-grants--block--avatars-block--img-1" src="{% static 'photos/avatar6.svg' %}" alt="">
+                                <img class="main__wrapper--rewards-grants--block--avatars-block--img-2" src="{% static 'photos/avatar7.svg' %}" alt="">
+                                <img class="main__wrapper--rewards-grants--block--avatars-block--img-3" src="{% static 'photos/avatar8.svg' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="main__wrapper--rewards-grants--block-4">
+                            <div class="main__wrapper--rewards-grants--block-4--content">
+                                <p class="main__wrapper--rewards-grants--block-4--p1">Crowd</p>
+                                <h3 class="main__wrapper--rewards-grants--block-4--h3">DAO Organizational Structure Research</h3>
+                                <p class="main__wrapper--rewards-grants--block-4--p2">Funding amount: $5,000 - $6,000</p>
+                                <p class="main__wrapper--rewards-grants--block-4--p3">The grant will be used to fund a deep dive research report around historical and existing DAO structures with guidance around successful best practices. Topics will include organization structure, reporting & accountability, contributors, funding, and more.</p>
+                            </div>
+                            <div class="main__wrapper--rewards-grants--block-4--avatars-block">
+                                <img class="main__wrapper--rewards-grants--block--avatars-block--img-1" src="{% static 'photos/avatar9.svg' %}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="main__wrapper--whats-new">
+                    <h3 class="main__wrapper--whats-new--h3">What's new?</h3>
+                    <p class="main__wrapper--whats-new--p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla risus, consectetur ut bibendum non, gravida non libero.</p>
+                    <a class="main__wrapper--whats-new--a" href="other_pages/index5.html" title="Blog">Read more on our blog</a>
+                </div>
+                <div class="main__wrapper--funding-round">
+                    <div class="main__wrapper--funding-round--block-1">
+                        <div class="main__wrapper--funding-round--block-1--content">
+                            <p class="main__wrapper--funding-round--block-1--p1">Funding round</p>
+                            <h3 class="main__wrapper--funding-round--block-1--h3">Round 9 of approvals</h3>
+                            <p class="main__wrapper--funding-round--block--p2">January 1, 2022</p>
+                        </div>
+                    </div>
+                    <div class="main__wrapper--funding-round--block-2">
+                        <div class="main__wrapper--funding-round--block-2--content">
+                            <p class="main__wrapper--funding-round--block-2--p1">Funding round</p>
+                            <h3 class="main__wrapper--funding-round--block-2--h3">Round 8 of approvals</h3>
+                            <p class="main__wrapper--funding-round--block--p2">January 1, 2022</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="main__wrapper--frequently-asked-questions">
+                    <h4 class="main__wrapper--frequently-asked-questions--h4">Frequently asked questions</h4>
+                    <p class="main__wrapper--frequently-asked-questions--p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla risus, consectetur ut bibendum non, gravida non libero.</p>
+                </div>
+                <div class="main__wrapper--frequently-asked-questions-list">
+                    <div class="main__wrapper--frequently-asked-questions-list--block-0" name="hidden block"></div>
+                    <div class="main__wrapper--frequently-asked-questions-list--block-1">
+                        <p class="main__wrapper--frequently-asked-questions-list--block-1--p">How do I apply?</p>
+                        <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                    </div>
+                    <div class="main__wrapper--frequently-asked-questions-list--block-2">
+                        <p class="main__wrapper--frequently-asked-questions-list--block-2--p">Can I apply as a U.S. based person/company?</p>
+                        <button class="main__wrapper--frequently-asked-questions-list--block-2--btn-add" type="button" title="add"></button>
+                    </div>
+                    <div class="main__wrapper--frequently-asked-questions-list--block-3">
+                        <p class="main__wrapper--frequently-asked-questions-list--block-3--p">How will I be compensated?</p>
+                        <button class="main__wrapper--frequently-asked-questions-list--block-3--btn-add" type="button" title="add"></button>
+                    </div>
+                    <div class="main__wrapper--frequently-asked-questions-list--block-4">
+                        <p class="main__wrapper--frequently-asked-questions-list--block-4--p">What type of project will qualify for a Grant?</p>
+                        <button class="main__wrapper--frequently-asked-questions-list--block-4--btn-add" type="button" title="add"></button>
+                    </div>
+                    <div class="main__wrapper--frequently-asked-questions-list--block-5">
+                        <p class="main__wrapper--frequently-asked-questions-list--block-5--p">What is the application timeline? When can I expect to hear back?</p>
+                        <button class="main__wrapper--frequently-asked-questions-list--block-5--btn-add" type="button" title="add"></button>
+                    </div>
+                    <div class="main__wrapper--frequently-asked-questions-list--block-6">
+                        <p class="main__wrapper--frequently-asked-questions-list--block-6--p">How can I increase my chances of getting funded?</p>
+                        <button class="main__wrapper--frequently-asked-questions-list--block-6--btn-add" type="button" title="add"></button>
+                    </div>
+                    <div class="main__wrapper--frequently-asked-questions-list--block-7">
+                        <p class="main__wrapper--frequently-asked-questions-list--block-7--p">How often do you approve new Rounds of funding?</p>
+                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                    </div>
+                </div>
+                <div class="main__wrapper--application">
+                    <h4 class="main__wrapper--application--h4">Application process</h4>
+                    <p class="main__wrapper--application--p">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque nulla risus, consectetur ut bibendum non, gravida non libero.</p>
+                </div>
+                <div class="main__wrapper--application-process">
+                    <div class="main__wrapper--application-process--block-1">
+                        <p class="main__wrapper--application-process--block--step">1</p>
+                        <h4 class="main__wrapper--application-process--block-1--h4">Apply</h4>
+                        <p class="main__wrapper--application-process--block--p">Submit a complete application to the dYdX Grants Team including as many details as possible about the proposed idea and their background.</p>
+                        <div class="main__wrapper--application-process--block-1--next-curved-arrow"></div>
+                    </div>
+                    <div class="main__wrapper--application-process--block-2">
+                        <p class="main__wrapper--application-process--block--step">2</p>
+                        <h4 class="main__wrapper--application-process--block-2--h4">Interview</h4>
+                        <p class="main__wrapper--application-process--block--p">If your application is selected, the dYdX Grants will conduct 1-2 interviews to collect more information on the Applicant's background and the proposal.</p>
+                        <div class="main__wrapper--application-process--block-2--next-curved-arrow"></div>
+                    </div>
+                    <div class="main__wrapper--application-process--block-3">
+                        <p class="main__wrapper--application-process--block--step">3</p>
+                        <h4 class="main__wrapper--application-process--block-3--h4">Grant offer</h4>
+                        <p class="main__wrapper--application-process--block--p">The dYdX Grants team will determine if the proposal fits into the grant program. A vesting schedule and timeline for product development reports will also be determined in the offer;</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer id="f" class="footer">
+            <div class="footer__wrapper">
+                <div class="footer__wrapper--project-plan-in-mind">
+                    <div class="footer__wrapper--project-plan-in-mind--block">
+                        <p class="footer__wrapper--project-plan-in-mind--block--p">Have a project in mind?</p>
+                        <h4 class="footer__wrapper--project-plan-in-mind--block--h4">Let's create something awesome.</h4>
+                        <a class="footer__wrapper--project-plan-in-mind--block--button" title="apply for grant" href="{% url 'registration' %}">Apply for grant</a>
+                    </div>
+                </div>
+                <div class="footer__wrapper--navigation">
+                    <div class="footer__wrapper--navigation--block-1">
+                        <a href="{% url 'main' %}" title="main page">
+                            <img src="{% static 'photos/footer_logo.svg' %}" alt="footer logo">
+                        </a>
+                    </div>
+                    <div class="footer__wrapper--navigation--block-2">
+                        <ul class="footer__wrapper--navigation--block-2--ol">
+                            <li class="footer__wrapper--navigation--block-2--ol--li"><a href="{% url 'faq' %}" title="FAQ">FAQ</a></li>
+                            <li class="footer__wrapper--navigation--block-2--ol--li"><a href="{% url 'login' %}" title="Login">Login</a></li>
+                            <li class="footer__wrapper--navigation--block-2--ol--li"><a href="{% url 'blog' %}" title="Blog">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__wrapper--navigation--block-3">
+                        <ul class="footer__wrapper--navigation--block-3--ul">
+                            <li class="footer__wrapper--navigation--block-3--ul--li"><a class="footer__wrapper--navigation--block-3--ul--li--a" href="https://www.twitter.com"><img src="{% static 'photos/Twitter - Negative.svg' %}" title="Twitter"></a></li>
+                            <li class="footer__wrapper--navigation--block-3--ul--li"><a class="footer__wrapper--navigation--block-3--ul--li--a" href="https://www.discord.com"><img src="{% static 'photos/Discord - Negative.svg' %}" title="Discord"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="{% static 'scripts/main.js' %}" defer="true"></script>
+    </body>
+</html>
