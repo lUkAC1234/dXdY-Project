@@ -54,22 +54,23 @@
                     <div class="main__wrapper">
                         <div class="login-box">
                             <h2>Login</h2>
-                            <form>
+                            <form action="" method="post">
+                                {% csrf_token %}
                                 <div class="user-box">
-                                    <input type="text" name="" required="" title="Username">
+                                    <input type="text" name="username" required="" title="Username">
                                     <label>Username</label>
                                 </div>
                                 <div class="user-box">
-                                    <input type="password" name="" required="" title="Password">
+                                    <input type="password" name="password" required="" title="Password">
                                     <label>Password</label>
                                 </div>
-                                <a href="#">
+                                <button type="submit">
                                     <span></span>
                                     <span></span>
                                     <span></span>
                                     <span></span>
                                     Submit
-                                </a>
+                                </button>
                             </form>
                         </div>
                     </div>

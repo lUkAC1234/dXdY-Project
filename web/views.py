@@ -1,27 +1,22 @@
 from django.shortcuts import render, redirect
-
-
-from django.http import HttpResponse
-from django.http import HttpResponseRedirect
-from django.http import JsonResponse
-
-from django.views.generic import TemplateView
+import requests
 from .forms import RegistrationForm, LoginForm
 from django.contrib.auth import login, logout, authenticate
 
+
 def smth(request):
-    
     template_name = 'main/index.html'
     return render(request, template_name, context={
-        
+
     })
 
+
 def smth2(request):
-    
     template_name = 'main/other_pages/index2.html'
     return render(request, template_name, context={
-        
+
     })
+
 
 def smth3(request):
     form = LoginForm()
@@ -35,18 +30,19 @@ def smth3(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('main')
             form.add_error('password', 'Incorrect password')
     return render(request, template_name, context={
-        'login_form' : form,
+        'login_form': form,
     })
 
+
 def smth4(request):
-    
     template_name = 'main/other_pages/index4.html'
     return render(request, template_name, context={
-        
+
     })
+
 
 def smth5(request):
     form = RegistrationForm()
@@ -62,11 +58,4 @@ def smth5(request):
 
     return render(request, template_name, context={
         'form': form
-    })
-
-def weather(request):
-    
-    template_name = 'main/other_pages/index6.html'
-    return render(request, template_name, context={
-        
     })
