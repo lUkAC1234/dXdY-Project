@@ -67,24 +67,64 @@
     float: left;
     position: relative;
     left: 1px;
+    padding-right: 10px;
     top: 8px;
 }
 
-.main > .main__wrapper > .main__wrapper--frequently-asked-questions-list > div > button {
-    float: right;
-    width: 24px;
-    height: 24px;
-    background: none;
+.Answer summary {
     border: 1px solid var(--background-primary);
-    background-image: url(../photos/fi_plus.svg);
-    background-repeat: no-repeat;
-    background-position: center;
     position: relative;
-    left: 0px;
-    top: 24px;
+    top: 20px;
+    list-style-type: none;
+    float: right;
+    padding-bottom: 20px;
 }
+
 
 .main > .main__wrapper > .main__wrapper--frequently-asked-questions-list > div > button:hover {
     filter: opacity(0.5);
     transition: all 0.1s linear;
+}
+
+.main__wrapper--frequently-asked-questions-list--block-1--a {
+    position: absolute;
+    left: 1200px;
+    margin-top: 12px;
+    padding: 10px 16px;
+    background: #6966FF;
+    border-radius: 16px;
+}
+
+.main__wrapper--frequently-asked-questions-list--block-1--a>a {
+    color: #C8C7D8;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 1500px) {
+    .main__wrapper--frequently-asked-questions-list--block-1--a {
+        left: 1000px;
+    }
+    @media screen and (max-width: 1210px) {
+        .main__wrapper--frequently-asked-questions-list--block-1--a {
+            left: 800px;
+        }
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .main__wrapper--frequently-asked-questions-list--block-1--a {
+        left: 700px;
+    }
+    @media screen and (max-width: 845px) {
+        .main__wrapper--frequently-asked-questions-list--block-1--a {
+            left: 600px;
+        }
+
+        @media screen and (max-width: 845px) {
+            .main__wrapper--frequently-asked-questions-list--block-1--a {
+                left: 535px;
+            }
+        }
+    }
+
 }

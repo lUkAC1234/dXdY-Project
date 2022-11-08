@@ -1,13 +1,15 @@
 html {
     height: 100%;
 }
+
 body {
-    margin:0;
-    padding:0;
+    margin: 0;
+    padding: 0;
     font-family: sans-serif;
     overflow-y: hidden;
     overflow-x: hidden;
 }
+
 .main {
     height: 100vh;
     display: flex;
@@ -19,9 +21,9 @@ body {
     width: 600px;
     padding: 40px;
     transform: translate(-50%, -50%);
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     box-sizing: border-box;
-    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
     border-radius: 10px;
     transform: scale(1.1);
     position: relative;
@@ -50,9 +52,10 @@ body {
     outline: none;
     background: transparent;
 }
+
 .login-box .user-box label {
     position: absolute;
-    top:0;
+    top: 0;
     left: 0;
     padding: 10px 0;
     font-size: 16px;
@@ -61,8 +64,8 @@ body {
     transition: .5s;
 }
 
-.login-box .user-box input:focus ~ label,
-.login-box .user-box input:valid ~ label {
+.login-box .user-box input:focus~label,
+.login-box .user-box input:valid~label {
     top: -20px;
     left: 0;
     color: #6966FF;
@@ -80,7 +83,7 @@ body {
     overflow: hidden;
     transition: .5s;
     margin-top: 40px;
-    letter-spacing: 4px
+    letter-spacing: 4px;
     background: var(--background-primary);
 }
 
@@ -88,10 +91,7 @@ body {
     background: #6966FF;
     color: #fff;
     border-radius: 5px;
-    box-shadow: 0 0 5px #6966FF,
-                0 0 25px #6966FF,
-                0 0 50px #6966FF,
-                0 0 100px #6966FF;
+    box-shadow: 0 0 5px #6966FF, 0 0 25px #6966FF, 0 0 50px #6966FF, 0 0 100px #6966FF;
 }
 
 .login-box button span {
@@ -112,7 +112,8 @@ body {
     0% {
         left: -100%;
     }
-    50%,100% {
+    50%,
+    100% {
         left: 100%;
     }
 }
@@ -131,7 +132,8 @@ body {
     0% {
         top: -100%;
     }
-    50%,100% {
+    50%,
+    100% {
         top: 100%;
     }
 }
@@ -150,7 +152,8 @@ body {
     0% {
         right: -100%;
     }
-    50%,100% {
+    50%,
+    100% {
         right: 100%;
     }
 }
@@ -169,7 +172,8 @@ body {
     0% {
         bottom: -100%;
     }
-    50%,100% {
+    50%,
+    100% {
         bottom: 100%;
     }
 }

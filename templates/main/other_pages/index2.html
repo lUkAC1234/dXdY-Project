@@ -22,10 +22,20 @@
                 </div>
                 <div class="header__wrapper--block-2">
                     <nav class="header__wrapper--block-2--nav-bar">
+                        User:{{ request.user }}
                         <a class="header__wrapper--block-2--nav-bar--link" href="{% url 'faq' %}" title="Discover initiatives">FAQ</a>
-                        <a class="header__wrapper--block-2--nav-bar--link" href="{% url 'login' %}" title="Funded grants">Login</a>
+                        {% if request.user.is_authenticated %}
+                            <a class="header__wrapper--block-2--nav-bar--link" href="{% url 'logout' %}" title="Funded grants">Logout</a>
+                            <a class="header__wrapper--block-2--nav-bar--link" href="{% url 'profile' %}" title="Profile">
+                                <img src="{{ request.user.user_image.url }}" alt="{{ request.user }}" class="rounded-circle" style="border-radius: 50%" width="75px" height="75px">
+                            </a>
+                            <a class="header__wrapper--block-2--nav-bar--link" href="{% url 'myblogs' %}" title="Your Blogs">Ur_Blogs</a>
+                            <a class="header__wrapper--block-2--nav-bar--link" href="{% url 'form' %}" title="Your Blogs">Form</a>
+                        {% else %}
+                            <a class="header__wrapper--block-2--nav-bar--link" href="{% url 'login' %}" title="Funded grants">Login</a>
+                            <a class="header__wrapper--block-2--nav-bar--link" href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                        {% endif %}
                         <a class="header__wrapper--block-2--nav-bar--link" href="{% url 'blog' %}" title="Program expenses">Blog</a>
-                        <a class="header__wrapper--block-2--nav-bar--link" href="{% url 'registration' %}" title="apply for grant">Apply for grant</a>
                     </nav>
                 </div>
             </div>
@@ -39,10 +49,18 @@
                 <div id="navbar" class="header__wrapper--mobile--overlay">
                     <a class="header__wrapper--mobile--overlay--closebtn" href="" title="hamburger" onclick="closeNavBar()">&times;</a>
                     <div class="header__wrapper--mobile--overlay--content-list">
+                        User:{{ request.user }}
+                        {% if request.user.is_authenticated %}
+                            <a class="header__wrapper--mobile--overlay--content-list--links" href="{% url 'profile' %}">Profile</a>
+                            <a class="header__wrapper--mobile--overlay--content-list--links" href="{% url 'myblogs' %}">Your Blogs</a>
+                            <a class="header__wrapper--mobile--overlay--content-list--links" href="{% url 'form' %}">Form</a>
+                            <a class="header__wrapper--mobile--overlay--content-list--links" href="{% url 'logout' %}">Logout</a>
+                        {% else %}
+                            <a class="header__wrapper--mobile--overlay--content-list--links" href="{% url 'login' %}">Login</a>
+                            <a class="header__wrapper--mobile--overlay--content-list--links" href="{% url 'registration' %}">Registration</a>
+                        {% endif %}
                         <a class="header__wrapper--mobile--overlay--content-list--links" href="{% url 'faq' %}">FAQ</a>
-                        <a class="header__wrapper--mobile--overlay--content-list--links" href="{% url 'login' %}">Login</a>
                         <a class="header__wrapper--mobile--overlay--content-list--links" href="{% url 'blog' %}">Blog</a>
-                        <a class="header__wrapper--mobile--overlay--content-list--links" href="{% url 'registration' %}">Apply for grant</a>
                     </div>
                 </div>
                 <span class="header__wrapper--mobile--span" onclick="openNavBar()">&#9776;</span>
@@ -58,128 +76,608 @@
                     <div class="main__wrapper--frequently-asked-questions-list--block-0" name="hidden block"></div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-1">
                         <p class="main__wrapper--frequently-asked-questions-list--block-1--p">How do I apply?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-2">
                         <p class="main__wrapper--frequently-asked-questions-list--block-2--p">Can I apply as a U.S. based person/company?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-2--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-3">
                         <p class="main__wrapper--frequently-asked-questions-list--block-3--p">How will I be compensated?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-3--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-4">
                         <p class="main__wrapper--frequently-asked-questions-list--block-4--p">What type of project will qualify for a Grant?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-4--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-5">
                         <p class="main__wrapper--frequently-asked-questions-list--block-5--p">What is the application timeline? When can I expect to hear back?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-5--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-6">
                         <p class="main__wrapper--frequently-asked-questions-list--block-6--p">How can I increase my chances of getting funded?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-6--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">How often do you approve new Rounds of funding?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">What is the dYdX Grants Trust?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">Where are funds held?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">When was the program launched?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">Who are the Trustees?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">What and who is the Enforcer?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">What is the dYdX Grants Trust?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">Where are funds held?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">When was the program launched?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">Who are the Trustees?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">What and who is the Enforcer?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-3">
                         <p class="main__wrapper--frequently-asked-questions-list--block-3--p">How will I be compensated?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-3--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-4">
                         <p class="main__wrapper--frequently-asked-questions-list--block-4--p">What type of project will qualify for a Grant?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-4--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-5">
                         <p class="main__wrapper--frequently-asked-questions-list--block-5--p">What is the application timeline? When can I expect to hear back?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-5--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-6">
                         <p class="main__wrapper--frequently-asked-questions-list--block-6--p">How can I increase my chances of getting funded?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-6--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">How often do you approve new Rounds of funding?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">What is the dYdX Grants Trust?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">Where are funds held?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">When was the program launched?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">Who are the Trustees?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">What and who is the Enforcer?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                     <div class="main__wrapper--frequently-asked-questions-list--block-7">
                         <p class="main__wrapper--frequently-asked-questions-list--block-7--p">What is the dYdX Grants Trust?</p>
-                        <button class="main__wrapper--frequently-asked-questions-list--block-7--btn-add" type="button" title="add"></button>
+                        {% if request.user.is_authenticated %}
+                            <details class="Answer">
+                                <summary>
+                                    <img src="{% static 'photos/fi_plus.svg' %}" alt="">
+                                </summary>
+                                <button class="main__wrapper--frequently-asked-questions-list--block-1--btn-add" type="button" title="add"></button>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem culpa doloremque doloribus eius mollitia? Blanditiis dignissimos eum eveniet fugiat illum ipsum maxime minima modi molestias nisi, rem sequi temporibus vitae!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur consequatur cum doloremque esse hic inventore molestiae tempora veniam! Asperiores assumenda ex, illo inventore ipsa magnam magni optio rerum sed sint!
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem deleniti, deserunt impedit nostrum quod soluta tempora. Amet, blanditiis dicta dolorem doloremque dolores expedita hic id laudantium provident quibusdam quo veniam.
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci atque blanditiis eos id illo laboriosam laudantium minima, molestias necessitatibus nesciunt, numquam odio officia optio perspiciatis quaerat, quas suscipit tempora unde.
+                                </p>
+                            </details>
+                        {% else %}
+                            <div class="main__wrapper--frequently-asked-questions-list--block-1--a">
+                                <a href="{% url 'registration' %}" title="apply for grant">Registration</a>
+                            </div>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </main>
         <footer id="f" class="footer">
             <div class="footer__wrapper">
-                <div class="footer__wrapper--project-plan-in-mind">
-                    <div class="footer__wrapper--project-plan-in-mind--block">
-                        <p class="footer__wrapper--project-plan-in-mind--block--p">Have a project in mind?</p>
-                        <h4 class="footer__wrapper--project-plan-in-mind--block--h4">Let's create something awesome.</h4>
-                        <a class="footer__wrapper--project-plan-in-mind--block--button" title="apply for grant" href="{% url 'registration' %}">Apply for grant</a>
+                {% if request.user.is_authenticated %}
+<!--                    -->
+                {% else %}
+                    <div class="footer__wrapper--project-plan-in-mind">
+                        <div class="footer__wrapper--project-plan-in-mind--block">
+                            <p class="footer__wrapper--project-plan-in-mind--block--p">Have a project in mind?</p>
+                            <h4 class="footer__wrapper--project-plan-in-mind--block--h4">Let's create something awesome.</h4>
+                            <a class="footer__wrapper--project-plan-in-mind--block--button" title="apply for grant" href="{% url 'registration' %}">Apply for grant</a>
+                        </div>
                     </div>
-                </div>
+                {% endif %}
                 <div class="footer__wrapper--navigation">
                     <div class="footer__wrapper--navigation--block-1">
                         <a href="{% url 'main' %}" title="main page">
@@ -189,7 +687,11 @@
                     <div class="footer__wrapper--navigation--block-2">
                         <ul class="footer__wrapper--navigation--block-2--ol">
                             <li class="footer__wrapper--navigation--block-2--ol--li"><a href="{% url 'faq' %}" title="FAQ">FAQ</a></li>
-                            <li class="footer__wrapper--navigation--block-2--ol--li"><a href="{% url 'login' %}" title="Login">Login</a></li>
+                            {% if request.user.is_authenticated %}
+<!--                                -->
+                            {% else %}
+                                <li class="footer__wrapper--navigation--block-2--ol--li"><a href="{% url 'login' %}" title="Login">Login</a></li>
+                            {% endif %}
                             <li class="footer__wrapper--navigation--block-2--ol--li"><a href="{% url 'blog' %}" title="Blog">Blog</a></li>
                         </ul>
                     </div>

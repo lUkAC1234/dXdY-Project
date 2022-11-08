@@ -1,0 +1,16 @@
+.blogs_name {
+    text-decoration: none;
+    color: #FFF;
+}
+
+.blogs_name:hover {
+    color: #1C1C28;
+}
+
+.blogs_name_div {
+    width: 300px;
+    padding: 8px 10px;
+    background-color: #6966FF;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}

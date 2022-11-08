@@ -1,0 +1,76 @@
+.main__wrapper-account__logo {
+    display: flex;
+    justify-content: center;
+    margin-top: 128px;
+}
+
+.main__wrapper--navigation--block-3>.main__wrapper--navigation--block-3--ul {
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    gap: 16px;
+}
+
+.main__wrapper--navigation--block-3>.main__wrapper--navigation--block-3--ul .main__wrapper--navigation--block-3--ul--li {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 24px 8px 8px;
+    width: 80px;
+    background: #393953;
+    border-radius: 100px
+}
+
+.main>.main__wrapper>.main__wrapper--rewards-grants--profile>.main__wrapper--rewards-grants--block {
+    display: flex;
+}
+
+.main>.main__wrapper>.main__wrapper--rewards-grants--profile>.main__wrapper--rewards-grants--block>div {
+    max-width: 460px;
+    min-height: 560px;
+    justify-content: center;
+    padding: 0px;
+    background: #393953;
+    border-radius: 16px;
+    margin: 25px auto 0 auto;
+    justify-content: center;
+}
+
+.main>.main__wrapper div:first-child>.main__wrapper--rewards-grants--block>div {
+    margin-top: 300px;
+}
+
+.main>.main__wrapper>.main__wrapper--rewards-grants--profile>.main__wrapper--rewards-grants--block>div>div>p:nth-child(even) {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 450;
+    line-height: 24px;
+    letter-spacing: -0.011em;
+    margin-left: 10px;
+}
+
+.main>.main__wrapper>.main__wrapper--rewards-grants--profile>.main__wrapper--rewards-grants--block>div>div>p:nth-child(odd) {
+    font-family: Space Mono;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #A59EBA;
+    margin-left: 10px;
+}
+
+.main__wrapper--rewards-grants--profile .main__wrapper--rewards-grants--block h3 {
+    margin-left: 10px;
+}
+
+@media screen and (max-width: 1400px) {
+    .main>.main__wrapper>.main__wrapper--rewards-grants--profile>.main__wrapper--rewards-grants--block {
+        flex-flow: column;
+    }
+    .main>.main__wrapper>.main__wrapper--rewards-grants--profile>.main__wrapper--rewards-grants--block>div:nth-child(2),
+    .main>.main__wrapper>.main__wrapper--rewards-grants--profile>.main__wrapper--rewards-grants--block>div:nth-child(3) {
+        margin-top: 25px;
+    }
+}
